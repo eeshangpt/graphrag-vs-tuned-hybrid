@@ -2,6 +2,8 @@
 
 Status: draft, not yet binding. It becomes binding when Eeshan decides the items in section 6 and the file is committed before the full run starts. Replaces nothing in `prereg.md` except where it says "replaces". Evidence: `wave2-bugcheck.md` (bug check, prompt test, counterfactual probe, latency).
 
+POST HOC LABELS: restoring the refusal prompt is a reversion to the registered design. Post hoc (chosen after seeing pilot data): keeping the guess prompt as a secondary, the 2Wiki per-type exclusion from H1, the gate threshold 0.10, the H2 margin, and the replacement H1.
+
 ## 1. Generator and prompt (replaces prereg sec 5 prompt, sec 6 sanity gate)
 Options considered:
 - A. Weaker generator (local 3-4B, e.g. Qwen3-4B-Instruct-2507, already in the HF cache). Needs the GPU (busy with #146 until tonight) or CPU at roughly 10-20 s per call (about 1,000 calls per method-dataset pair at n=1000: hours per arm). A weak reader is also a different confound: it fails multi-hop reading, so retrieval differences get compressed by reader errors.
@@ -21,9 +23,9 @@ Sanity gate (replaces): (i) F1 on rows where the gold string is not in the retri
 | 1000 | 0.45 | 0.00 | 0.36 | 0.76 | 0.94 |
 | 1000 | 0.35 | 0.13 | 0.71 | 0.95 | 1.00 |
 - n needed for 80% power at margin 2 F1: 4,300 (SD 0.45) or 2,600 (SD 0.35); at margin 3 F1: 1,900 or 1,170; at margin 4 F1: about 1,100 or 650. So "within 2 F1" is not testable with the available data; the old text "n=500" was also wrong on power.
-- Amended H2 (MuSiQue): HippoRAG 2 vs tuned hybrid at B=1000 is declared equivalent if the 90% paired-bootstrap CI of the F1 difference lies inside +/-4 F1; declared graph-better if the CI lower bound exceeds +4; otherwise inconclusive. n=1,000. Power 0.70-0.95 for the equivalence outcome. This margin is a post hoc weakening chosen for feasibility: the published HippoRAG 2 gap on MuSiQue (+2.9 F1) lies inside it, so an "equivalent" verdict cannot rule out the published effect. The three thresholds are distinct claims: equivalence (CI inside +/-4), graph-better (lower bound above +4), kill (graph beats hybrid by more than 5 F1 with lower bound above 0; the 4-5 band is reported as inconclusive).
+- Amended H2 (MuSiQue): HippoRAG 2 vs tuned hybrid at B=1000 is declared equivalent if the 90% paired-bootstrap CI of the F1 difference lies inside +/-4 F1; declared graph-better if the CI lower bound exceeds +4; otherwise inconclusive. n=1,000. Power 0.70-0.95 for the equivalence outcome. This margin is a post hoc weakening chosen for feasibility: the published HippoRAG 2 gap on MuSiQue (+2.9 F1) lies inside it, so an "equivalent" verdict cannot rule out the published effect. Outcomes for H2 are one mutually exclusive table, on the 90% paired-bootstrap CI [L, U] of F1(graph) - F1(hybrid+rerank), MuSiQue, B=1000: graph-better if L > +4; equivalent if -4 < L and U < +4; hybrid-better if U < -4; otherwise inconclusive. The kill rule (below) is a separate, stricter statement evaluated at the 95% level and applies only when the H2 outcome is graph-better, so it cannot fire on an inconclusive H2.
 - Amended H1 (2Wiki) REPLACES the registered H1 ("hybrid closes at least half of the dense-to-graph gap"), which needs a graph-vs-dense gap estimate and is too complex to power: needs HippoRAG 2 on 2Wiki, which needs OpenIE extraction for 6,119 passages (see decisions). Stated as superiority of graph over tuned hybrid: graph-better if the paired 95% CI lower bound exceeds 0. The headline 2Wiki subset (compositional + inference) is about 46% of 1,000, about 460 questions, so power for a superiority claim is lower than for MuSiQue (not computed; SD for this subset in the pilot was 0.28 for rerank minus dense). If graph is not run on 2Wiki, H1 is dropped and the 2Wiki arm reports the baselines only.
-- Kill rule unchanged in spirit: graph beats tuned hybrid by more than 5 F1 (CI lower bound above 0) on every dataset where it was run.
+- Kill rule (95% CI): graph beats tuned hybrid by more than 5 F1 (point estimate above +5 and 95% lower bound above 0) on every dataset where it was run AND H2 is graph-better; otherwise no kill.
 
 ## 3. Context budget B (replaces prereg sec 4 "Secondary")
 - Primary B=1000 for all hypotheses. Secondary B=2000 on the same questions for every arm, reported as a sensitivity table without its own hypothesis tests or multiplicity correction; its purpose is the context-size confound seen in 2502.11371 App. M (a graph edge that disappears at larger budget is flagged "budget-sensitive"). Also record the share of "unanswerable" per arm at each B. Optional B=500 not run.
@@ -38,10 +40,10 @@ Sanity gate (replaces): (i) F1 on rows where the gold string is not in the retri
 
 ## 5. Other fixes carried from the audit
 - Prompt text is registered here exactly (`PROMPT_PREREG` in `harness.py`).
-- Scorer (future work, not yet implemented): the normaliser leaves "5 a.m." as "5 am" vs gold "5am"; collapse single-letter dotted abbreviations before normalising and recompute all arms.
+- Scorer (future work, not yet implemented): the normaliser leaves "5 a.m." as "5 am" vs gold "5am"; compare with whitespace removed as a secondary match ("5 a.m." -> "5 am" still differs from "5am" after the normaliser, so removing dots alone does not help) and recompute all arms.
 - Report latency median and p95 and generator latency; report the number of dropped unanswerable questions and the n actually scored.
 - Slice reading fixed: permutation of all indices, first n.
-- Supporting-passage recall: add for both datasets (MuSiQue via is_supporting, 2Wiki via supporting_facts titles); first numbers are in wave2-bugcheck.md sec 5-6.
+- Supporting-passage recall: add for both datasets (MuSiQue via is_supporting, 2Wiki via supporting_facts titles); first numbers are in wave2-bugcheck.md sec 5.
 
 ## 6. Decisions Eeshan must make
 1. Graph on 2Wiki (needed for H1): run OpenIE extraction for 6,119 passages with `claude -p` (about 6,100 passages; the pilot note said about 12k calls if NER and triple steps are separate calls, so budget 6-12k calls; 2-3 hours with 4 workers, notional about $60, subscription only, uses a lot of weekly usage; extraction quality differs from the gpt-4o-mini file MuSiQue uses), or drop H1 and run graph on MuSiQue only. Recommendation: do it, after the 22:30 reset, because 2Wiki is where the paper's graph gain is largest (+9.5 F1).

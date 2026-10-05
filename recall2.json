@@ -1,0 +1,32 @@
+{
+ "dense/guess": {
+  "n_not_in_ctx_excl_yesno": 17,
+  "F1": 0.43921568627450974,
+  "ctx_tok_mismatches_vs_logged": 0
+ },
+ "dense/prereg": {
+  "n_not_in_ctx_excl_yesno": 17,
+  "F1": 0.0,
+  "ctx_tok_mismatches_vs_logged": 0
+ },
+ "bm25/guess": {
+  "n_not_in_ctx_excl_yesno": 16,
+  "F1": 0.3494791666666667,
+  "ctx_tok_mismatches_vs_logged": 0
+ },
+ "bm25/prereg": {
+  "n_not_in_ctx_excl_yesno": 16,
+  "F1": 0.0,
+  "ctx_tok_mismatches_vs_logged": 0
+ },
+ "hybrid/guess": {
+  "n_not_in_ctx_excl_yesno": 17,
+  "F1": 0.3509803921568627,
+  "ctx_tok_mismatches_vs_logged": 0
+ },
+ "hybrid/prereg": {
+  "n_not_in_ctx_excl_yesno": 17,
+  "F1": 0.0,
+  "ctx_tok_mismatches_vs_logged": 0
+ }
+}
