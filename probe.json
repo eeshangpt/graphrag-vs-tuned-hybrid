@@ -1,0 +1,402 @@
+[
+ {
+  "ds": "musique",
+  "q": "What time of day can you start purchasing alcohol in the state that includes Narraguagus High School?",
+  "gold": "5am",
+  "alt": "2016",
+  "ans_orig_ctx": "5 a.m.",
+  "ans_cf_ctx": "2016",
+  "cf_follows_ctx": true,
+  "cf_memory": false
+ },
+ {
+  "ds": "musique",
+  "q": "What did M. King Hubbert's employer announce it was in the process of doing in April 2010?",
+  "gold": "trying to find a potential buyer for all of its operations in Finland",
+  "alt": "built on 16-bit architectures and offered improved graphics and sound",
+  "ans_orig_ctx": "Finding a buyer for its Finland operations",
+  "ans_cf_ctx": "Doing market research concerning Swedish operations",
+  "cf_follows_ctx": false,
+  "cf_memory": false
+ },
+ {
+  "ds": "musique",
+  "q": "Who did the creator of Derech Mitzvosecha follow?",
+  "gold": "Dovber Schneuri",
+  "alt": "Cornell University",
+  "ans_orig_ctx": "Dovber Schneuri",
+  "ans_cf_ctx": "Rabbi Cornell University",
+  "cf_follows_ctx": true,
+  "cf_memory": false
+ },
+ {
+  "ds": "musique",
+  "q": "What year did the group that performed From Them, Through Us, to You form?",
+  "gold": "2005",
+  "alt": "75",
+  "ans_orig_ctx": "2005",
+  "ans_cf_ctx": "75",
+  "cf_follows_ctx": true,
+  "cf_memory": false
+ },
+ {
+  "ds": "musique",
+  "q": "When did the majority party in the body which determines the rules of the US House and US Senate gain control of the House?",
+  "gold": "the 2010 election",
+  "alt": "Vito Corleone",
+  "ans_orig_ctx": "2010",
+  "ans_cf_ctx": "2010",
+  "cf_follows_ctx": false,
+  "cf_memory": true
+ },
+ {
+  "ds": "musique",
+  "q": "Who is the child of the Victim of Romance performer?",
+  "gold": "Chynna Phillips",
+  "alt": "Deanna Russo",
+  "ans_orig_ctx": "Chynna Phillips",
+  "ans_cf_ctx": "Deanna Russo",
+  "cf_follows_ctx": true,
+  "cf_memory": false
+ },
+ {
+  "ds": "musique",
+  "q": "What dissolved the privileges of the empire using Pan-Slavism as a political tool, the kingdom acquiring some Thuringian territory or Habsburg Monarchy?",
+  "gold": "March Constitution of Poland",
+  "alt": "expelled by the Soviet Union",
+  "ans_orig_ctx": "March Constitution of Poland",
+  "ans_cf_ctx": "Soviet Union",
+  "cf_follows_ctx": true,
+  "cf_memory": false
+ },
+ {
+  "ds": "musique",
+  "q": "The city that Psycho Donuts is located in is in which county?",
+  "gold": "Santa Clara County",
+  "alt": "Manhattan Project",
+  "ans_orig_ctx": "Santa Clara County",
+  "ans_cf_ctx": "Manhattan Project",
+  "cf_follows_ctx": true,
+  "cf_memory": false
+ },
+ {
+  "ds": "musique",
+  "q": "Where was the person who wrote about the rioting being a dividing factor in Birmingham educated?",
+  "gold": "University of Glasgow",
+  "alt": "the Mississippi River Delta",
+  "ans_orig_ctx": "unanswerable",
+  "ans_cf_ctx": "unanswerable",
+  "cf_follows_ctx": false,
+  "cf_memory": false
+ },
+ {
+  "ds": "musique",
+  "q": "When did Nissan, the Acura Legend maker and the Scion Fuse manufacturer open US assembly plants?",
+  "gold": "1981",
+  "alt": "1930",
+  "ans_orig_ctx": "A decade after the 1973 oil crisis (c. 1983)",
+  "ans_cf_ctx": "A decade after the 1973 oil crisis",
+  "cf_follows_ctx": false,
+  "cf_memory": false
+ },
+ {
+  "ds": "musique",
+  "q": "What dissolved the privileges in Poland of the empire that the British sided with against the Ottomans, the Kingdom that acquired some Thuringian territory in 1815, and the Habsburg Monarchy?",
+  "gold": "March Constitution of Poland",
+  "alt": "expelled by the Soviet Union",
+  "ans_orig_ctx": "March Constitution of Poland",
+  "ans_cf_ctx": "the Soviet Union",
+  "cf_follows_ctx": true,
+  "cf_memory": false
+ },
+ {
+  "ds": "musique",
+  "q": "Where does the body of water by the city Astronautalis is from and the Ohio River meet?",
+  "gold": "at the city of Cairo, Illinois",
+  "alt": "March Constitution of Poland",
+  "ans_orig_ctx": "Cairo, Illinois",
+  "ans_cf_ctx": "unanswerable",
+  "cf_follows_ctx": false,
+  "cf_memory": false
+ },
+ {
+  "ds": "musique",
+  "q": "Who in the14th century introduced musical notation used where Jack later participated in a covert mission?",
+  "gold": "John Kukuzelis",
+  "alt": "Fiorello La Guardia",
+  "ans_orig_ctx": "John Kukuzelis",
+  "ans_cf_ctx": "Fiorello La Guardia",
+  "cf_follows_ctx": true,
+  "cf_memory": false
+ },
+ {
+  "ds": "musique",
+  "q": "What was the name of Forced Vengeance's producer in Walker, Texas Ranger?",
+  "gold": "Cordell Walker",
+  "alt": "Second Sophistic",
+  "ans_orig_ctx": "unanswerable",
+  "ans_cf_ctx": "unanswerable",
+  "cf_follows_ctx": false,
+  "cf_memory": false
+ },
+ {
+  "ds": "musique",
+  "q": "Who was played by the creator of Push, Nevada in Dazed and Confused?",
+  "gold": "Fred O'Bannion",
+  "alt": "February 7, 2018",
+  "ans_orig_ctx": "Fred O'Bannion",
+  "ans_cf_ctx": "February 7, 2018",
+  "cf_follows_ctx": true,
+  "cf_memory": false
+ },
+ {
+  "ds": "musique",
+  "q": "What record label is the performer of Almost Made Ya signed to?",
+  "gold": "Derrty Entertainment",
+  "alt": "Greek mythology",
+  "ans_orig_ctx": "Derrty Entertainment",
+  "ans_cf_ctx": "Universal Records",
+  "cf_follows_ctx": false,
+  "cf_memory": false
+ },
+ {
+  "ds": "musique",
+  "q": "Who is the sibling of the author of Kapalkundala?",
+  "gold": "Sanjib Chandra",
+  "alt": "Fred O'Bannion",
+  "ans_orig_ctx": "unanswerable",
+  "ans_cf_ctx": "unanswerable",
+  "cf_follows_ctx": false,
+  "cf_memory": false
+ },
+ {
+  "ds": "musique",
+  "q": "The actor who plays copper in Fox and the Hound is a character in which film?",
+  "gold": "The Hateful Eight",
+  "alt": "Senica District",
+  "ans_orig_ctx": "The Hateful Eight",
+  "ans_cf_ctx": "Senica District",
+  "cf_follows_ctx": true,
+  "cf_memory": false
+ },
+ {
+  "ds": "musique",
+  "q": "Who is the owner of the record label of the performer of Groovy Little Summer Song?",
+  "gold": "Warner Music Group",
+  "alt": "the 2010 election",
+  "ans_orig_ctx": "Warner Music Group",
+  "ans_cf_ctx": "the 2010 election",
+  "cf_follows_ctx": true,
+  "cf_memory": false
+ },
+ {
+  "ds": "musique",
+  "q": "Who was the spouse of the first convert to the faith that is the most common religion in Lebanon?",
+  "gold": "Khawlah bint Ja'far",
+  "alt": "Francisco Guterres",
+  "ans_orig_ctx": "Fatimah",
+  "ans_cf_ctx": "Francisco Guterres",
+  "cf_follows_ctx": true,
+  "cf_memory": false
+ },
+ {
+  "ds": "2wiki",
+  "q": "What nationality is the director of film 3096 Days?",
+  "gold": "American",
+  "alt": "Aatma Gowravam",
+  "ans_orig_ctx": "German-American",
+  "ans_cf_ctx": "German",
+  "cf_follows_ctx": false,
+  "cf_memory": false
+ },
+ {
+  "ds": "2wiki",
+  "q": "Where was the director of film En Aasai Rasave born?",
+  "gold": "Theni",
+  "alt": "May 13, 1846",
+  "ans_orig_ctx": "Mallingapuram",
+  "ans_cf_ctx": "Mallingapuram",
+  "cf_follows_ctx": false,
+  "cf_memory": false
+ },
+ {
+  "ds": "2wiki",
+  "q": "When did Conall Mac Comgaill's father die?",
+  "gold": "538",
+  "alt": "489",
+  "ans_orig_ctx": "538, 542 and 545 (per Annals of Ulster; 537 per Annals of Tigernach)",
+  "ans_cf_ctx": "537, 542 or 545 (the sources disagree; the Annals of Ulster give 489, 542 and 545, and the Annals of Tigernach give 537)",
+  "cf_follows_ctx": false,
+  "cf_memory": false
+ },
+ {
+  "ds": "2wiki",
+  "q": "Where was the composer of film Billy Elliot born?",
+  "gold": "Southampton, Hampshire",
+  "alt": "Raiders Of Red Gap",
+  "ans_orig_ctx": "Southampton, Hampshire",
+  "ans_cf_ctx": "Raiders Of Red Gap",
+  "cf_follows_ctx": true,
+  "cf_memory": false
+ },
+ {
+  "ds": "2wiki",
+  "q": "When did Marzuban Ibn Muhammad's father die?",
+  "gold": "953",
+  "alt": "2007",
+  "ans_orig_ctx": "before 953",
+  "ans_cf_ctx": "before 2007",
+  "cf_follows_ctx": true,
+  "cf_memory": false
+ },
+ {
+  "ds": "2wiki",
+  "q": "Where was the director of film Kadathanaattu Maakkam born?",
+  "gold": "Pulinkunnoo",
+  "alt": "New York",
+  "ans_orig_ctx": "Pulinkunnoo",
+  "ans_cf_ctx": "New York",
+  "cf_follows_ctx": true,
+  "cf_memory": false
+ },
+ {
+  "ds": "2wiki",
+  "q": "Where did Mate Me\u0161trovi\u0107's father graduate from?",
+  "gold": "Academy of Fine Arts Vienna",
+  "alt": "Leopoldo Torres R\u00edos",
+  "ans_orig_ctx": "Academy of Fine Arts Vienna",
+  "ans_cf_ctx": "unanswerable",
+  "cf_follows_ctx": false,
+  "cf_memory": false
+ },
+ {
+  "ds": "2wiki",
+  "q": "What is the place of birth of the director of film Thiruvannamalai (Film)?",
+  "gold": "Nattarasankottai",
+  "alt": "Her Husband'S Trademark",
+  "ans_orig_ctx": "Nattarasankottai",
+  "ans_cf_ctx": "Her Husband'S Trademark",
+  "cf_follows_ctx": true,
+  "cf_memory": false
+ },
+ {
+  "ds": "2wiki",
+  "q": "Where was the husband of Serena Evans born?",
+  "gold": "Evesham, Worcestershire",
+  "alt": "Halc\u00f3n Suriano Jr.",
+  "ans_orig_ctx": "Evesham, Worcestershire",
+  "ans_cf_ctx": "Halc\u00f3n Suriano Jr.",
+  "cf_follows_ctx": true,
+  "cf_memory": false
+ },
+ {
+  "ds": "2wiki",
+  "q": "Where was the place of death of Elizabeth Fitzalan, Duchess Of Norfolk's husband?",
+  "gold": "Venice",
+  "alt": "Karnataka",
+  "ans_orig_ctx": "Venice",
+  "ans_cf_ctx": "Karnataka",
+  "cf_follows_ctx": true,
+  "cf_memory": false
+ },
+ {
+  "ds": "2wiki",
+  "q": "What nationality is the director of film Blood Street?",
+  "gold": "Chinese",
+  "alt": "Kuwait",
+  "ans_orig_ctx": "Chinese American",
+  "ans_cf_ctx": "Kuwait American",
+  "cf_follows_ctx": true,
+  "cf_memory": false
+ },
+ {
+  "ds": "2wiki",
+  "q": "Where did Oei Hui-Lan's father die?",
+  "gold": "Singapore",
+  "alt": "Caroline Huppert",
+  "ans_orig_ctx": "Singapore",
+  "ans_cf_ctx": "Caroline Huppert",
+  "cf_follows_ctx": true,
+  "cf_memory": false
+ },
+ {
+  "ds": "2wiki",
+  "q": "Where was the composer of film Love Story 1999 born?",
+  "gold": "Tamil",
+  "alt": "Neuengamme",
+  "ans_orig_ctx": "unanswerable",
+  "ans_cf_ctx": "unanswerable",
+  "cf_follows_ctx": false,
+  "cf_memory": false
+ },
+ {
+  "ds": "2wiki",
+  "q": "Where did Hasan Ibn Hasan's father die?",
+  "gold": "Medina",
+  "alt": "Gisela Elsner",
+  "ans_orig_ctx": "Medina",
+  "ans_cf_ctx": "Gisela Elsner",
+  "cf_follows_ctx": true,
+  "cf_memory": false
+ },
+ {
+  "ds": "2wiki",
+  "q": "Where was the performer of song Znayu Ya born?",
+  "gold": "L'viv",
+  "alt": "La Carapate",
+  "ans_orig_ctx": "L'viv",
+  "ans_cf_ctx": "unanswerable",
+  "cf_follows_ctx": false,
+  "cf_memory": false
+ },
+ {
+  "ds": "2wiki",
+  "q": "What is the date of death of Papianilla (Wife Of Sidonius Apollinaris)'s husband?",
+  "gold": "489",
+  "alt": "1904",
+  "ans_orig_ctx": "August 489 AD",
+  "ans_cf_ctx": "August 1904 AD",
+  "cf_follows_ctx": false,
+  "cf_memory": false
+ },
+ {
+  "ds": "2wiki",
+  "q": "Who is the mother of the composer of film Charlie Chaplin 2?",
+  "gold": "Jayachitra",
+  "alt": "Australian",
+  "ans_orig_ctx": "Jayachitra",
+  "ans_cf_ctx": "Australian",
+  "cf_follows_ctx": true,
+  "cf_memory": false
+ },
+ {
+  "ds": "2wiki",
+  "q": "Where was the father of Teodor Peja\u010devi\u0107 born?",
+  "gold": "Sopron",
+  "alt": "Navavadhu",
+  "ans_orig_ctx": "Sopron",
+  "ans_cf_ctx": "Navavadhu",
+  "cf_follows_ctx": true,
+  "cf_memory": false
+ },
+ {
+  "ds": "2wiki",
+  "q": "Where was the place of death of the director of film Gold And The Woman?",
+  "gold": "New York",
+  "alt": "VGIK",
+  "ans_orig_ctx": "New York, New York",
+  "ans_cf_ctx": "VGIK",
+  "cf_follows_ctx": true,
+  "cf_memory": false
+ },
+ {
+  "ds": "2wiki",
+  "q": "Where was the place of burial of Sultan Cem's father?",
+  "gold": "Fatih Mosque",
+  "alt": "Jasna \u017dalica",
+  "ans_orig_ctx": "unanswerable",
+  "ans_cf_ctx": "unanswerable",
+  "cf_follows_ctx": false,
+  "cf_memory": false
+ }
+]

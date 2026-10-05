@@ -70,6 +70,10 @@ def fill(docs, ranked, B):
 # ---------- generator (single interface) ----------
 PROMPT = ("Answer the question using only the context. Reply with the shortest possible answer phrase (an entity, date or number), "
           "no explanation. If the context is insufficient, give your best guess.\n\nContext:\n{c}\n\nQuestion: {q}\nAnswer:")
+PROMPT_PREREG = ("Answer the question using only the context. Reply with the shortest possible answer phrase (an entity, date or number), "
+          "no explanation. If the context does not contain the answer, reply with the single word: unanswerable.\n\nContext:\n{c}\n\nQuestion: {q}\nAnswer:")
+import os
+if os.environ.get("PROMPT_VARIANT") == "prereg": PROMPT = PROMPT_PREREG
 LEAN = ["--strict-mcp-config", "--mcp-config", '{"mcpServers":{}}', "--disable-slash-commands", "--setting-sources", "project", "--tools", ""]
 
 def gen_claude(q, ctx, model="claude-sonnet-5-5"):
@@ -119,4 +123,4 @@ if __name__ == "__main__":
         for (q, ids, tot, rl, ctx), (ans, u) in zip(jobs, res):
             f, e = score(ans, q["gold"]); rows.append({"ds": a.ds, "B": a.B, "method": m, "id": q["id"], "f1": f, "em": e, "ctx_tok": tot, "n_pass": len(ids), "ret_s": rl, "gen": u, "ans": ans, "gold": q["gold"][0]})
         print(m, "done", flush=True)
-    json.dump({"index_emb_s": ix.t["index_emb_s"], "index_tokens": ix.index_tokens, "n_docs": len(docs), **extra, "rows": rows}, open(ROOT / f"out/{a.ds}_n{a.n}_B{a.B}_{a.methods.replace(',','-')[:30]}.json", "w"))
+    json.dump({"index_emb_s": ix.t["index_emb_s"], "index_tokens": ix.index_tokens, "n_docs": len(docs), **extra, "rows": rows}, open(ROOT / f"out/{a.ds}_n{a.n}_B{a.B}{os.environ.get("PROMPT_VARIANT","")}_{a.methods.replace(',','-')[:30]}.json", "w"))
