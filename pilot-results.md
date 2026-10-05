@@ -28,7 +28,7 @@ Paired vs dense: BM25 +0.031 [-0.078, +0.142]; hybrid +0.078 [-0.020, +0.182]; h
 | HippoRAG 2 | not run (no precomputed OpenIE for 2Wiki) | | |
 Paired vs dense: BM25 -0.018 [-0.100, +0.062]; hybrid -0.050 [-0.120, +0.000]; hybrid+rerank +0.007 [-0.056, +0.080].
 
-Matched check (prereg 4): mean actual context differs by up to 14% on 2Wiki (803 vs 900) and 2% on MuSiQue, inside the 15% tolerance, but 2Wiki is close to the line. Same slice for all methods (seed 20261005).
+Matched check (prereg 4): mean actual context differs by up to 12% on 2Wiki (803 vs 900) and 2% on MuSiQue, inside the 15% tolerance, but 2Wiki is close to the line. Same slice for all methods (seed 20261005).
 
 ## 2. Cost (not a full comparison yet)
 - Dense/BM25/hybrid/rerank indexing: 1,348,035 embedding tokens (MuSiQue corpus, cl100k count), 597 s on CPU (two jobs sharing the machine, so inflated; 2Wiki 376 s). Dollars: $0 (local).
