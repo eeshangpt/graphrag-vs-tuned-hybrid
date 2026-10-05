@@ -1,0 +1,182 @@
+{
+ "musique/dense": {
+  "supporting_recall": 0.5716666666666668,
+  "gold_in_ctx": 0.5,
+  "guess_F1_goldNOTinctx": [
+   25,
+   0.4133333333333333
+  ],
+  "guess_F1_goldinctx": [
+   25,
+   0.6103766233766234
+  ],
+  "prereg_F1_goldNOTinctx": [
+   25,
+   0.0
+  ],
+  "prereg_F1_goldinctx": [
+   25,
+   0.45680519480519477
+  ]
+ },
+ "musique/bm25": {
+  "supporting_recall": 0.525,
+  "gold_in_ctx": 0.38,
+  "guess_F1_goldNOTinctx": [
+   31,
+   0.46500929743714126
+  ],
+  "guess_F1_goldinctx": [
+   19,
+   0.6709842788790157
+  ],
+  "prereg_F1_goldNOTinctx": [
+   31,
+   0.0
+  ],
+  "prereg_F1_goldinctx": [
+   19,
+   0.7210526315789473
+  ]
+ },
+ "musique/hybrid": {
+  "supporting_recall": 0.6066666666666667,
+  "gold_in_ctx": 0.46,
+  "guess_F1_goldNOTinctx": [
+   27,
+   0.5148148148148148
+  ],
+  "guess_F1_goldinctx": [
+   23,
+   0.6786391869000565
+  ],
+  "prereg_F1_goldNOTinctx": [
+   27,
+   0.0
+  ],
+  "prereg_F1_goldinctx": [
+   23,
+   0.5020703933747412
+  ]
+ },
+ "musique/hybrid_rerank": {
+  "supporting_recall": 0.6699999999999998,
+  "gold_in_ctx": 0.58,
+  "guess_F1_goldNOTinctx": [
+   21,
+   0.5317460317460317
+  ],
+  "guess_F1_goldinctx": [
+   29,
+   0.6532235761818338
+  ],
+  "prereg_F1_goldNOTinctx": [
+   21,
+   0.0
+  ],
+  "prereg_F1_goldinctx": [
+   29,
+   0.6415957605612778
+  ]
+ },
+ "musique/hippo": {
+  "supporting_recall": 0.6733333333333333,
+  "gold_in_ctx": 0.66,
+  "guess_F1_goldNOTinctx": [
+   17,
+   0.38235294117647056
+  ],
+  "guess_F1_goldinctx": [
+   33,
+   0.7067886658795749
+  ],
+  "prereg_F1_goldNOTinctx": [
+   17,
+   0.0
+  ],
+  "prereg_F1_goldinctx": [
+   33,
+   0.5321789321789322
+  ]
+ },
+ "2wiki/dense": {
+  "supporting_recall": 0.68,
+  "gold_in_ctx": 0.56,
+  "guess_F1_goldNOTinctx": [
+   22,
+   0.5666666666666667
+  ],
+  "guess_F1_goldinctx": [
+   28,
+   0.875
+  ],
+  "prereg_F1_goldNOTinctx": [
+   22,
+   0.13636363636363635
+  ],
+  "prereg_F1_goldinctx": [
+   28,
+   0.5892857142857143
+  ]
+ },
+ "2wiki/bm25": {
+  "supporting_recall": 0.685,
+  "gold_in_ctx": 0.58,
+  "guess_F1_goldNOTinctx": [
+   21,
+   0.45674603174603173
+  ],
+  "guess_F1_goldinctx": [
+   29,
+   0.9137931034482759
+  ],
+  "prereg_F1_goldNOTinctx": [
+   21,
+   0.14285714285714285
+  ],
+  "prereg_F1_goldinctx": [
+   29,
+   0.5689655172413793
+  ]
+ },
+ "2wiki/hybrid": {
+  "supporting_recall": 0.685,
+  "gold_in_ctx": 0.56,
+  "guess_F1_goldNOTinctx": [
+   22,
+   0.45303030303030306
+  ],
+  "guess_F1_goldinctx": [
+   28,
+   0.875
+  ],
+  "prereg_F1_goldNOTinctx": [
+   22,
+   0.13636363636363635
+  ],
+  "prereg_F1_goldinctx": [
+   28,
+   0.5535714285714286
+  ]
+ },
+ "2wiki/hybrid_rerank": {
+  "supporting_recall": 0.715,
+  "gold_in_ctx": 0.6,
+  "guess_F1_goldNOTinctx": [
+   20,
+   0.49111111111111116
+  ],
+  "guess_F1_goldinctx": [
+   30,
+   0.9166666666666666
+  ],
+  "prereg_F1_goldNOTinctx": [
+   20,
+   0.15
+  ],
+  "prereg_F1_goldinctx": [
+   30,
+   0.6166666666666667
+  ]
+ }
+}
