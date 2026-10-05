@@ -15,7 +15,7 @@ MuSiQue (corpus 11,656 passages):
 | hybrid RRF | 0.590 [0.468, 0.709] | 0.46 | 931 |
 | hybrid + rerank (bge-reranker-base) | 0.602 [0.479, 0.724] | 0.46 | 911 |
 | HippoRAG-2-lite (bge-small, no LLM triple filter, shipped OpenIE; not the published system) | 0.596 [0.472, 0.717] | 0.46 | 919 |
-Paired vs dense: BM25 +0.031 [-0.078, +0.142]; hybrid +0.078 [-0.020, +0.182]; hybrid+rerank +0.090 [-0.026, +0.211]; HippoRAG 2 +0.085 [-0.006, +0.184]. HippoRAG 2 minus hybrid+rerank: -0.006 [-0.129, +0.116].
+Paired vs dense: BM25 +0.031 [-0.078, +0.142]; hybrid +0.078 [-0.020, +0.182]; hybrid+rerank +0.090 [-0.026, +0.211]; HippoRAG-2-lite +0.085 [-0.006, +0.184]. HippoRAG-2-lite minus hybrid+rerank: -0.006 [-0.129, +0.116].
 
 2WikiMultiHopQA (corpus 6,119 passages):
 | method | F1 [95% CI] | EM | mean ctx tokens |
@@ -38,7 +38,7 @@ Matched check (prereg 4): mean actual context differs by up to 12% on 2Wiki (803
 - Claude generation (not part of the matched cost): 548 uncached calls, notional $4.42, subscription; every call carries about 2.5k tokens of Claude Code overhead, so `usage.in` is not the context size.
 
 ## 3. Sanity gate and honest caveats
-- Gate FAILED on 2Wiki; no separate bug check was done, only the checks in the audit. Pre-registered: dense F1 should be 0.25-0.55; MuSiQue dense is 0.51 (in range) but 2Wiki dense is 0.74 (out of range). The no-context control is far above the 0.1 leakage threshold (0.30 and 0.58). Only 9 of 50 2Wiki golds are yes/no (about 0.14 of the 0.58 no-context F1, per the auditor's recount); most of it is parametric knowledge of Wikipedia. The prompt also says "give your best guess" (deviation 1), which raises the control. A bug in the pipeline is not excluded. The generator is too strong and too knowledgeable to measure retrieval differences well; on 2Wiki, retrieval adds only +0.16 F1 over no context. This is a design problem for the full run, not a result.
+- Gate FAILED on 2Wiki; no separate bug check was done, only the checks in the audit. Pre-registered: dense F1 should be 0.25-0.55; MuSiQue dense is 0.51 (in range) but 2Wiki dense is 0.74 (out of range). The no-context control is far above the 0.1 leakage threshold (0.30 and 0.58). Only 9 of 50 2Wiki golds are yes/no (about 0.12 of the 0.58 no-context F1, recounted by the Opus auditor in round 2); the rest is probably mostly parametric knowledge of Wikipedia (not tested). The prompt also says "give your best guess" (deviation 1), which raises the control. A bug in the pipeline is not excluded. The generator is probably too strong and knowledgeable to measure retrieval differences well (not established); on 2Wiki, retrieval adds only +0.16 F1 over no context. This is a design problem for the full run, not a result.
 - n=50: all CIs are about +/-12 F1 on single means; no paired difference is distinguishable from zero. The pilot's only use is variance and pipeline validation.
 - MuSiQue ordering (dense < BM25 < hybrid ~ rerank ~ HippoRAG-2-lite) is suggestive, nothing more; H1/H2 concern the published HippoRAG 2, which this pilot did not run. On 2Wiki the fusion arm is lower than dense alone (-0.05, CI touching 0) and rerank restores it; do not read this as a finding.
 - One generation per question, no temperature control in `claude -p`; run-to-run noise is unmeasured.
@@ -50,6 +50,7 @@ Matched check (prereg 4): mean actual context differs by up to 12% on 2Wiki (803
 - LightRAG: not run. Needs LLM extraction over the whole corpus (published about 68.5M in / 18.3M out tokens on MuSiQue) and keyword extraction per query. Install path: `pip install lightrag-hku`, an LLM function, embedding function, token caps set to B.
 
 ## 5. What the full run must change before it starts (proposed amendments, to be pre-registered separately)
+0. Do the bug check the prereg requires after a gate failure (inspect 2Wiki no-context and dense answers, gold normalisation, prompt effect with and without the "best guess" line).
 1. Replace or add a weaker/less knowledgeable generator (local small model; the GPU is #146's) or an entity-substituted/counterfactual variant, so the no-context control is near 0.
 2. Drop 2Wiki yes/no and comparison questions from F1 headline, or report them separately.
 3. Rerun the reranker timing alone.
@@ -61,4 +62,5 @@ Matched check (prereg 4): mean actual context differs by up to 12% on 2Wiki (803
 3. `fill` counts a separator as +1 token instead of tokenising the joined string (approximation).
 4. Metrics not reported: latency median/p95 (medians 0.116 s MuSiQue, 0.112 s 2Wiki for hybrid), generator latency, dropped unanswerable count (0; harness drops after slicing so n would shrink silently). HippoRAG retrieval time is not in the rows (batch-precomputed; 50 queries took about 9 s per the run log).
 5. Reranker timing is contaminated by CPU contention (stated above).
-Auditor round 1 (Opus, claude-opus-5-5, notional $0.63): CHANGES, 11 findings; numbers reproduce from the JSONs; fixes applied in this file, `README.md` added, `report.py` path fixed.
+The commit-date, 13:36 file-date and 48/50 overlap statements were checked in the harness repo (~/research/graphrag-hybrid), not from these copies.
+Auditor round 1 (Opus, claude-opus-5-5, notional $0.63): CHANGES, 11 findings; numbers reproduce from the JSONs; fixes applied in this file (round 2: CHANGES, 4 small wording fixes, applied), `README.md` added, `report.py` path fixed.
