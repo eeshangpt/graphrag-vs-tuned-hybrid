@@ -1,0 +1,21 @@
+# agy audit of the wave-2 deliverable, round 1 (#162)
+Auditor: gemini-3.1-pro-high via bin/agy-run, caller graphrag, 2026-10-06 ~19:45 IST, 361 s, 251,567 tokens, on an anonymized copy (bin/anonymize run by the owner, `--check` clean, then a grep for paths and names clean). Raw output: `audit-agy-r1.json`. Note: the audited snapshot was my pre-freeze copy of `prereg-amendment-1.md`; the frozen version (tag prereg-162-frozen) already contains the full-sample 2Wiki, the 90/95% CI split and the alias rule. Two earlier agy attempts with my first prompt returned off-task answers (one audited pilot-results only and returned APPROVE; one "confirmed" the owner decisions); they are not counted as audits. The audit that counts is the third call.
+
+VERDICT: CHANGES (5 numbered findings: 3 blocking, 2 should-fix, plus one minor "numbers reproduce").
+
+| # | agy severity | Finding | My response |
+|---|---|---|---|
+| 1 | blocking | H2 margin +/-4 F1 exceeds the published +2.9 effect, so "equivalent" cannot rule it out; margin must be tighter | Agree on the fact, disagree on "meaningless" and on the fix. Already disclosed in amendment 1 sec 2 and decided by the owner. Margin 3 F1 has power 0.32-0.68 at n=950, margin 2 about 0. The honest framing is: the +/-4 verdict is "equivalent within 4 F1, published effect not excluded"; the CI itself is the primary result. No change; wording stays. |
+| 2 | blocking | n=1,000 reuses the exploratory first 50 for confirmation; amend to n=950 | AGREE (new, not caught by the three Opus rounds or the three prior agy rounds on amendment 1). Proposed as A2.1 in `prereg-amendment-2-DRAFT.md`. |
+| 3 | should-fix | The leakage gate is trivially 0 under the refusal prompt; evaluate it under the guess prompt | Partly agree. Under the refusal prompt the statistic is an empirical test that could be above 0 (it was 0.14 on 2Wiki before the yes/no exclusion), so it is informative for the headline condition. But the guess-prompt value is a useful descriptive measure. A2.2 reports it, non-gating. |
+| 4 | should-fix | B=2000 needs formal hypothesis tests because B=1000 is binding | Partly agree. Formal tests add multiplicity and a second primary. A2.3 gives B=2000 the same H2 classification with a "robust vs budget-sensitive" consistency rule instead. |
+| 5 | blocking | H3 V* ignores the graph's per-query LLM triple filter and prices CPU at $0; the 10% premium may never be reached | Agree it is a real weakness (Opus round 1 finding 6 said the same; amendment 1 notes the omission but still gives a V* of about 210k). A2.4: report the filter cost and a CPU-rate sensitivity, V* undefined if the graph's per-query cost is higher. |
+| 6 | minor | All recomputed numbers match wave2-bugcheck.md (refusal rates 52-64%, by-type, probe 12 and 4, recall) | Noted; consistent with Opus rounds 1-3. |
+
+Status: not looped further. The amendment is frozen and the confirmatory run is queued, so A2.1-A2.4 need the owner's decision before any round 2.
+
+## Comparison with the three Opus rounds on the same deliverable
+- Overlap: H2 margin versus the published +2.9 effect (Opus r1 #7); H3 cost framing and the omitted triple filter (Opus r1 #6); numbers reproduce (Opus r1-r3); post hoc and exploratory-slice caution (Opus r1 #9 and r3).
+- New from agy: n=950 / exploratory-slice reuse as a blocking confirmatory flaw (Opus noted the reuse risk only as a caveat in my own text, never as a defect of the amendment); B=2000 should be formally tested (a design opinion I partly reject); the leakage gate "gamed under the refusal prompt" argument (arguable).
+- New from Opus not repeated by agy: wrong scorer explanation (the space), type-unmatched probe substitutes, spurious "no" substring matches in gold-in-context, refusal-gap range, probe count inconsistencies, retrieval re-run check scope. Opus audited at line level and recomputed from JSONs by stdlib; agy gave design-level critique and confirmed numbers.
+- Reliability note for #93: agy returned two off-task answers before one valid audit when the prompt was a file reference; an explicit role statement ("you are an auditor, not a decision maker; start with APPROVE or CHANGES") fixed it. Duration 212-361 s per call.
