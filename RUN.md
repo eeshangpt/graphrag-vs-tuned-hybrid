@@ -1,3 +1,14 @@
-# Confirmatory run (#162), frozen at tag prereg-162-frozen
-Queued: `~/research/graphrag-hybrid/queue` (listed in `night/jobq.txt`); `night/run.sh` runs it via `bin/jobq` inside the 02:00-09:00 night window, after the usage reset; it resumes from `cache/` after any usage-limit stop. Jobs: `NN-<ds>-B<B>.sh` = `PROMPT_VARIANT=prereg .venv/bin/python harness.py --ds <ds> --n 1000 --B <B> --methods dense,bm25,hybrid,hybrid_rerank,nocontext[,hippo]` (hippo on MuSiQue only), B=1000 and B=2000; `05-guess-secondary.sh` = guess-prompt secondary at B=1000. Manual: `JOBQ_ANYTIME=1 bin/jobq ~/research/graphrag-hybrid/queue`.
-NOT queued, missing code: the 2Wiki graph arm. `hippo_adapter.py` reads the shipped MuSiQue OpenIE file only; a `claude -p` OpenIE extraction for the 6,119 2Wiki passages plus the adapter change does not exist yet (amendment sec 6 item 1). Needs a build ticket before the 2Wiki hippo job can be added (`--methods ...,hippo --ds 2wiki`).
+# How the confirmatory run was executed
+
+The run was queued at tag `prereg-162-frozen` as plain shell jobs, executed in order from the repo root. Each job resumes from `cache/` after an interruption, because every generator call is cached by prompt hash.
+
+| job | what it does |
+|---|---|
+| `queue/01-musique-B1000.sh` | MuSiQue, n=1000, B=1000, all six arms (the graph arm uses the authors' shipped OpenIE file) |
+| `queue/03-2wiki-B1000.sh` | 2WikiMultiHopQA, n=1000, B=1000, the five non-graph arms |
+| `queue/06-2wiki-openie.sh` | OpenIE for all 6,119 2Wiki passages with `claude -p` (`openie_2wiki.py`) |
+| `queue/07-2wiki-B1000-hippo.sh` | 2Wiki graph arm, built on the triples from job 06 |
+
+`queue-later/` holds jobs that were written but never run: the B=2000 sensitivity runs (`02`, `04`) and the guess-prompt secondary (`05`). `deviations.md` lists them as unmet commitments.
+
+Jobs 06 and 07 were added after the freeze, because the 2Wiki graph arm needed code that did not exist at the time of amendment 1 (amendment 1, section 6, item 1). `deviations.md` has the details.

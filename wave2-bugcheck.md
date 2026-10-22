@@ -1,7 +1,7 @@
 # Wave 2: amendment 0 (bug check after the 2Wiki sanity-gate failure), leakage test, reranker latency - #162
 
 TL;DR: no pipeline bug found. The 2Wiki gate failed because 27 of 50 sampled 2Wiki questions (comparison and bridge_comparison) are choose-one or yes/no questions whose answer options are in the question text, so they score 0.67-1.0 with no context at all. The compositional 2Wiki questions behave like MuSiQue (no-context F1 0.30). The bigger finding: the generator prompt dominates. With the prereg prompt (refusal allowed) no-context F1 is exactly 0.00 on both datasets, and under it the ordering of methods changes relative to the guess prompt, and rerank and HippoRAG-2-lite separate from dense on MuSiQue (other orderings moved, consistent with noise at n=50). Those prereg-prompt runs are exploratory (run after seeing the pilot), n=50.
-Data and code: files in this folder (`*prereg*.json`, `probe.json`, `latency_alone.json`, `probe.py`, `lat.py`, `report2.py`); the harness repo is `~/research/graphrag-hybrid`.
+Data and code: files in this folder (`*prereg*.json`, `probe.json`, `latency_alone.json`, `probe.py`, `lat.py`, `report2.py`); the harness copies are in this repo.
 
 ## 1. Bug check (what I checked)
 - Alignment: question ids join to gold answers in the source file; 12 items (2Wiki, first in slice order) printed end to end with question, gold, no-context answer, dense answer: all consistent (e.g. "Where was the director of En Aasai Rasave born" gold Theni; dense answers Theni; no-context says Chennai).

@@ -1,7 +1,7 @@
 # Pilot results (n=50 per dataset, B=1000 tokens) - topic 5, #162
 
 TL;DR: the pipeline works end to end and the pilot cannot tell the methods apart. All paired CIs include 0, and the sanity gate in the pre-registration FAILED on 2Wiki (cause not established, see 3). No verdict, no scale/kill, by the pre-registered rule (prereg section 6).
-Pre-registration: `prereg.md` (committed before any number; cos-os commit ddeef0b, author date 13:04 IST; the commit date 13:55 is from a later rebase by another process; the first pilot result file is dated 13:36). Harness: `~/research/graphrag-hybrid/` (local git). Generator: `claude -p` claude-sonnet-5-5, subscription (548 uncached calls, notional $4.42). Raw rows: the `*.json` files here.
+Pre-registration: `prereg.md` (committed before any number; commit 23c53f9 here, ddeef0b in the original private repo, author date 13:04 IST; the commit date 13:55 is from a later rebase by another process; the first pilot result file is dated 13:36). Harness: the repo root (local git). Generator: `claude -p` claude-sonnet-5-5, subscription (548 uncached calls, notional $4.42). Raw rows: the `*.json` files here.
 
 ## 1. Quality, matched budget B=1000 (whole passages, cl100k tokens)
 Bootstrap 95% CI (10k resamples), n=50 questions each, one generation per question.
@@ -62,5 +62,5 @@ Matched check (prereg 4): mean actual context differs by up to 12% on 2Wiki (803
 3. `fill` counts a separator as +1 token instead of tokenising the joined string (approximation).
 4. Metrics not reported: latency median/p95 (medians 0.116 s MuSiQue, 0.112 s 2Wiki for hybrid), generator latency, dropped unanswerable count (0; harness drops after slicing so n would shrink silently). HippoRAG retrieval time is not in the rows (batch-precomputed; 50 queries took about 9 s per the run log).
 5. Reranker timing is contaminated by CPU contention (stated above).
-The commit-date, 13:36 file-date and 48/50 overlap statements were checked in the harness repo (~/research/graphrag-hybrid), not from these copies.
+The commit-date, 13:36 file-date and 48/50 overlap statements were checked in the original harness working copy, not from these copies.
 Auditor round 1 (Opus, claude-opus-5-5, notional $0.63): CHANGES, 11 findings; numbers reproduce from the JSONs; fixes applied in this file (round 2: CHANGES, 4 small wording fixes, applied), `README.md` added, `report.py` path fixed.

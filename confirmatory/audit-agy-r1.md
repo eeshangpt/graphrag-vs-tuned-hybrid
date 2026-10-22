@@ -51,11 +51,11 @@ All definitions in `report.md` Section 5 follow standard literature:
 ---
 
 ### 5. Disclosure Verification
-Searched [deviations.md](file:///tmp/claude-1000/audit_r1/deviations.md) and [report.md](file:///tmp/claude-1000/audit_r1/report.md) for post-freeze timing and unmet commitments:
-- Post-data freeze of Amendment 2 is disclosed in [deviations.md](file:///tmp/claude-1000/audit_r1/deviations.md#L6-L8) item 2, [prereg-amendment-2.md](file:///tmp/claude-1000/audit_r1/prereg-amendment-2.md#L6-L10) header, and [report.md](file:///tmp/claude-1000/audit_r1/report.md#L45-L46) Section 4.
-- Unrun A2.2 (secondary guess-prompt leakage) is disclosed in [deviations.md](file:///tmp/claude-1000/audit_r1/deviations.md#L11-L12) item 4, item 11, and [report.md](file:///tmp/claude-1000/audit_r1/report.md#L39-L41) Section 3.
-- Unrun A2.3 ($B=2000$ sensitivity rule) is disclosed in [deviations.md](file:///tmp/claude-1000/audit_r1/deviations.md#L13-L15) item 5, item 11, and [report.md](file:///tmp/claude-1000/audit_r1/report.md#L39-L41) Section 3.
-- Retrieval ID logging gap reconstructed via rerun reproduction is disclosed in [deviations.md](file:///tmp/claude-1000/audit_r1/deviations.md#L9-L10) item 3 and [report.md](file:///tmp/claude-1000/audit_r1/report.md#L37-L38) Section 3.
+Searched [deviations.md](deviations.md) and [report.md](report.md) for post-freeze timing and unmet commitments:
+- Post-data freeze of Amendment 2 is disclosed in [deviations.md](deviations.md#L6-L8) item 2, [prereg-amendment-2.md](prereg-amendment-2.md#L6-L10) header, and [report.md](report.md#L45-L46) Section 4.
+- Unrun A2.2 (secondary guess-prompt leakage) is disclosed in [deviations.md](deviations.md#L11-L12) item 4, item 11, and [report.md](report.md#L39-L41) Section 3.
+- Unrun A2.3 ($B=2000$ sensitivity rule) is disclosed in [deviations.md](deviations.md#L13-L15) item 5, item 11, and [report.md](report.md#L39-L41) Section 3.
+- Retrieval ID logging gap reconstructed via rerun reproduction is disclosed in [deviations.md](deviations.md#L9-L10) item 3 and [report.md](report.md#L37-L38) Section 3.
 Disclosure is complete and adequate.
 
 ---
@@ -64,7 +64,7 @@ Disclosure is complete and adequate.
 
 #### Finding 1 (Medium Severity): Gate filter in `analyze.py` inadvertently excludes 101 questions from 2Wiki supporting-passage recall and gold-in-context calculations
 - **Verbatim quote from named file**:
-  In [analyze.py](file:///tmp/claude-1000/audit_r1/analyze.py#L81-L89):
+  In [analyze.py](analyze.py#L81-L89):
   ```python
   for i in conf:
       g = G[i]
@@ -76,30 +76,30 @@ Disclosure is complete and adequate.
 ```python
       if v and v["sup_n"]: recs.append(v["sup_hit"] / v["sup_n"])
 ```
-  And in [report.md](file:///tmp/claude-1000/audit_r1/report.md#L27):
+  And in [report.md](report.md#L27):
   > "Supporting-passage recall within B: MuSiQue rerank 0.60, graph 0.61, dense 0.54; 2Wiki rerank 0.70, graph 0.87, dense 0.69."
 - **Contradiction with frozen protocol**:
-  In [prereg-amendment-1.md](file:///tmp/claude-1000/audit_r1/prereg-amendment-1.md#L22):
+  In [prereg-amendment-1.md](prereg-amendment-1.md#L22):
   > "Sanity gate (replaces): (i) F1 on rows where no gold string is in the retrieved context (excluding yes/no golds)."
-  And in [prereg-amendment-1.md](file:///tmp/claude-1000/audit_r1/prereg-amendment-1.md#L24):
+  And in [prereg-amendment-1.md](prereg-amendment-1.md#L24):
   > "2Wiki handling: the primary (confirmatory) analysis, including H1, uses the FULL sample (all question types, n=1,000)."
-  And in [prereg-amendment-2.md](file:///tmp/claude-1000/audit_r1/prereg-amendment-2.md#L14):
+  And in [prereg-amendment-2.md](prereg-amendment-2.md#L14):
   > "Confirmatory sample excludes the exploratory slice. ... Confirmatory n = 950 per dataset (permutation positions 51-1000)"
-  **Details**: The protocol restricts the exclusion of yes/no golds strictly to sanity gate (i). In [analyze.py](file:///tmp/claude-1000/audit_r1/analyze.py#L83), `if norm(g[0]) in ("yes", "no"): continue` is placed before `recs.append` and `gin.append`. Consequently, 101 comparison-type questions with yes/no answers on 2Wiki were dropped from `supporting-passage recall` and `gold string in context`, evaluating them on $n=849$ instead of the full confirmatory sample of $n=950$.
+  **Details**: The protocol restricts the exclusion of yes/no golds strictly to sanity gate (i). In [analyze.py](analyze.py#L83), `if norm(g[0]) in ("yes", "no"): continue` is placed before `recs.append` and `gin.append`. Consequently, 101 comparison-type questions with yes/no answers on 2Wiki were dropped from `supporting-passage recall` and `gold string in context`, evaluating them on $n=849$ instead of the full confirmatory sample of $n=950$.
 
 ---
 
 #### Finding 2 (Low Severity): V* implementation uses `>=` instead of `>` and contradicts report prose
 - **Verbatim quote from named file**:
-  In [analyze.py](file:///tmp/claude-1000/audit_r1/analyze.py#L115-L116):
+  In [analyze.py](analyze.py#L115-L116):
   ```python
   def vstar(prem, idx_h, qh, qg):
       if qg >= qh: return "undefined (graph per-query cost >= hybrid's)"
   ```
-  And in [report.md](file:///tmp/claude-1000/audit_r1/report.md#L15):
+  And in [report.md](report.md#L15):
   > "Cost (H3), as run: indexing premium $3.18 (MuSiQue, published tokens) / $4.47 (2Wiki, measured tokens, priced at the gpt-4o-mini reference) and equal per-query generator cost, so V* = 211,748 / 331,309 queries."
 - **Contradiction with frozen protocol**:
-  In [prereg-amendment-2.md](file:///tmp/claude-1000/audit_r1/prereg-amendment-2.md#L17):
+  In [prereg-amendment-2.md](prereg-amendment-2.md#L17):
   > "V* is reported as 'undefined' if the graph's per-query cost exceeds the hybrid's."
-  **Details**: The protocol requires $V^*$ to be undefined when graph per-query cost *exceeds* hybrid ($q_g > q_h$). [analyze.py](file:///tmp/claude-1000/audit_r1/analyze.py#L115) tests `qg >= qh`, improperly treating equal costs as undefined. Furthermore, [report.md](file:///tmp/claude-1000/audit_r1/report.md#L15) states there is "equal per-query generator cost", which under the code's `>=` logic would have returned undefined; in reality, $q_g < q_h$ ($0.00014778 < 0.00015021$ on MuSiQue; $0.00012531 < 0.00013491$ on 2Wiki), which is why $V^*$ was computed.
+  **Details**: The protocol requires $V^*$ to be undefined when graph per-query cost *exceeds* hybrid ($q_g > q_h$). [analyze.py](analyze.py#L115) tests `qg >= qh`, improperly treating equal costs as undefined. Furthermore, [report.md](report.md#L15) states there is "equal per-query generator cost", which under the code's `>=` logic would have returned undefined; in reality, $q_g < q_h$ ($0.00014778 < 0.00015021$ on MuSiQue; $0.00012531 < 0.00013491$ on 2Wiki), which is why $V^*$ was computed.
 

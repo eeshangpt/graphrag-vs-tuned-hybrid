@@ -1,5 +1,5 @@
 # agy audit 1 of prereg amendment 1 (#162)
-Auditor: gemini-3.1-pro-high via bin/agy-run, 2026-10-06 10:37 IST, on an anonymized copy (bin/anonymize --check passed).
+Auditor: gemini-3.1-pro-high via the agy CLI, 2026-10-06 10:37 IST, on an anonymized copy (anonymiser check passed).
 
 VERDICT: CHANGES
 
