@@ -49,7 +49,7 @@ I have not done this end to end from a clean clone, so treat it as untested.
 | `deviations.md` | every departure from the protocol, including the ones that hurt |
 | `harness.py`, `hippo_adapter.py`, `openie_2wiki.py` | retrieval arms and generator calls, the HippoRAG 2 adapter, triple extraction for 2Wiki |
 | `confirmatory/` | `analyze.py`, `results.json`, `results.md`, `report.md`, retrieval ids, audit records of the final analysis |
-| `out/` | n=1000 rows per arm and dataset, the 2Wiki triples, the generator cache |
+| `out/` | n=1000 rows, the 2Wiki triples, the generator cache. File names are `<dataset>_n1000_B1000prereg_dense-bm25-hybrid-hybrid_reran.json` (the arms dense, bm25, hybrid, hybrid_rerank, nocontext, plus hippo for MuSiQue; the name was cut off by the harness) and `2wiki_n1000_B1000prereg_hippo.json` (the 2Wiki graph arm, run later) |
 | `*_n50_*.json`, `pilot-results.md`, `wave2-bugcheck.md`, `probe.json`, recall and latency scripts | the pilot (n=50) and the bug check after it |
 | `audit-*.md` | reviews of the pilot and of amendment 1 by another model (Gemini), called through a command line tool named `agy`; they are second-model reviews run by scripts, not human audits |
 | `queue/`, `queue-later/` | job scripts that ran, and some I wrote and never ran |

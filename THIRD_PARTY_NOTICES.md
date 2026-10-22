@@ -25,3 +25,12 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+
+## MuSiQue
+
+The gold answers and answer aliases in `out/` rows come from MuSiQue (Trivedi et al., 2022, "MuSiQue: Multihop Questions via Single-hop Question Composition", https://github.com/StonyBrookNLP/musique), distributed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Changes: only the answer strings are kept, together with ids, scores and generated answers.
+
+## 2WikiMultiHopQA
+
+The gold answers in `out/` rows come from 2WikiMultiHopQA (Ho et al., 2020, https://github.com/Alab-NII/2wikimultihop, repository licence Apache-2.0). The passages behind it are from Wikipedia (CC BY-SA); contributors are listed in each article's history.
