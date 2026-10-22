@@ -1,6 +1,6 @@
 # History of this repo
 
-This repo started as one folder of a private repo. I extracted that folder's history with `git filter-repo --subdirectory-filter`, so the 19 commits below are the original ones with the same author and committer dates. Everything after the commit `5e2fa2c` ("confirmatory analysis") was added on 2026-10-23 to prepare this repo.
+This repo started as one folder of a private repo. I extracted that folder's history with `git filter-repo --subdirectory-filter`, so the 19 commits below are the original ones with the same author and committer dates. Everything after the commit `ab8907b` ("confirmatory analysis") was added on 2026-10-23 to prepare this repo.
 
 ## What was changed in the history
 
@@ -55,7 +55,7 @@ All local times are IST (+05:30). "Server time" is what GitHub recorded, convert
 What this means for the claims:
 
 - Amendment 1 and the original protocol were on the server at 13:01:25 on 2026-10-06. The first confirmatory answer was cached at 02:36 on 2026-10-07, about 13.5 hours later. No answers were cached in between except the one 2Wiki OpenIE test at 23:37. The confirmatory protocol therefore existed before the confirmatory data, according to a server record.
-- Amendment 2 was on the server as a draft at 19:46 on 2026-10-06, before the first confirmatory answer, and frozen on 2026-10-11, after the MuSiQue and 2Wiki rows were finished. Its text between draft and freeze differs only in the header: `git diff aaa4f50:prereg-amendment-2-DRAFT.md prereg-162-amendment-2-frozen:prereg-amendment-2.md` shows one changed hunk at the top, and sections A2.1 to A2.4 are identical (`deviations.md` item 2).
+- Amendment 2 was on the server as a draft at 19:46 on 2026-10-06, before the first confirmatory answer, and frozen on 2026-10-11, after the MuSiQue and 2Wiki rows were finished. Its text between draft and freeze differs only in the header: `git diff 7a7d582:prereg-amendment-2-DRAFT.md prereg-162-amendment-2-frozen:prereg-amendment-2.md` shows one changed hunk at the top, and sections A2.1 to A2.4 are identical (`deviations.md` item 2).
 - The first pilot file (13:36) is earlier than the first server record of `prereg.md` (13:55). The 13:04 time rests on my local git record. A local copy of the original commit has the identical file (same blob id), and author dates in git can be set by hand, so read 13:04 as my own record. The pilot is exploratory and does not feed the headline numbers.
 
 ## Old and new commit ids
@@ -73,11 +73,11 @@ What this means for the claims:
 | `cb7f7be` | `036d26a` | 2026-10-05 15:30 | research: wave 2 audit r3 fixes, logs |
 | `a56e3b1` | `2a0528b` | 2026-10-06 10:37 | research: audit round 1 of amendment 1 (CHANGES, 3 findings) |
 | `1d61714` | `db45b28` | 2026-10-06 10:40 | research: amendment 1 revised after audit round 1; audit round 2 |
-| `b50a9ee` | `e0257e6` | 2026-10-06 10:41 | research: amendment 1 approved by the independent audit in round 3 |
-| `852effb` | `d9896ec` | 2026-10-06 13:01 | research: freeze prereg + amendment 1 (all author decisions in) |
-| `577de94` | `95b45a3` | 2026-10-06 13:01 | research: queue confirmatory run; RUN.md |
-| `aaa4f50` | `73340d0` | 2026-10-06 19:46 | research: independent audit of wave 2 (CHANGES), amendment 2 draft |
-| `de1f95f` | `2b5899a` | 2026-10-06 23:40 | research: deviations log (2Wiki OpenIE by Claude, not gpt-4o-mini) |
-| `c11bfbb` | `efe33ab` | 2026-10-08 18:58 | research: logs, audit records, helper scripts |
-| `2102016` | `c73fe24` | 2026-10-11 16:59 | research: freeze amendment 2 (n=950 confirmatory) |
-| `5e2fa2c` | `23dcb71` | 2026-10-11 19:50 | research: confirmatory analysis (ITERATE), independent audit APPROVE r2 |
+| `875a664` | `e0257e6` | 2026-10-06 10:41 | research: amendment 1 approved by the second-model audit in round 3 |
+| `f50dc15` | `d9896ec` | 2026-10-06 13:01 | research: freeze prereg + amendment 1 (all author decisions in) |
+| `a71d882` | `95b45a3` | 2026-10-06 13:01 | research: queue confirmatory run; RUN.md |
+| `7a7d582` | `73340d0` | 2026-10-06 19:46 | research: second-model audit of wave 2 (CHANGES), amendment 2 draft |
+| `c84e2e3` | `2b5899a` | 2026-10-06 23:40 | research: deviations log (2Wiki OpenIE by Claude, not gpt-4o-mini) |
+| `84349cf` | `efe33ab` | 2026-10-08 18:58 | research: logs, audit records, helper scripts |
+| `878b162` | `c73fe24` | 2026-10-11 16:59 | research: freeze amendment 2 (n=950 confirmatory) |
+| `ab8907b` | `23dcb71` | 2026-10-11 19:50 | research: confirmatory analysis (ITERATE), second-model audit APPROVE r2 |
