@@ -1,7 +1,7 @@
 import json, glob, sys, numpy as np
 from harness import boot
 by = {}
-for f in glob.glob("out/*_n50_B1000_*.json") or glob.glob("*_n50_B1000_*.json"):
+for f in glob.glob("out/*_n50_B1000_*.json"):
     d = json.load(open(f))
     for r in d["rows"]: by.setdefault((r["ds"], r["method"]), {})[r["id"]] = r
 for ds in ("musique", "2wiki"):

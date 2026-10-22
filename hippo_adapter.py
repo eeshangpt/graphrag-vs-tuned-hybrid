@@ -1,4 +1,4 @@
-"""HippoRAG 2 retrieval-only adapter (MuSiQue only: precomputed gpt-4o-mini OpenIE ships with the repo).
+"""HippoRAG 2 retrieval-only adapter (MuSiQue: precomputed gpt-4o-mini OpenIE ships with the repo; 2Wiki: out/openie_2wiki.json from openie_2wiki.py, claude sonnet).
 Deviations from the paper (declared): bge-small embedder instead of NV-Embed-v2; NO LLM triple filter (recognition memory)
 -> candidate facts pass through by score. Indexing LLM cost is NOT measured here: uses the shipped OpenIE file.
 Install: git clone https://github.com/OSU-NLP-Group/HippoRAG graph/HippoRAG ; uv pip install python_igraph networkx litellm openai ... ; PYTHONPATH=graph/HippoRAG/src"""
@@ -10,7 +10,8 @@ from hipporag import HippoRAG
 def build(docs, ds="musique"):
     sd = ROOT / f"cache/hippo_{ds}"; sd.mkdir(exist_ok=True)
     h = HippoRAG(save_dir=str(sd), llm_model_name="gpt-4o-mini", embedding_model_name="Transformers/BAAI/bge-small-en-v1.5")
-    p = json.load(open(ROOT / "graph/HippoRAG/outputs/musique/openie_results_ner_gpt-4o-mini.json"))
+    # musique: shipped gpt-4o-mini file; 2wiki: openie_2wiki.py output (claude sonnet; HIPPO_OPENIE overrides the path, e.g. for the 50-passage sample)
+    p = json.load(open(os.environ.get("HIPPO_OPENIE") or (ROOT / ("out/openie_2wiki.json" if ds == "2wiki" else "graph/HippoRAG/outputs/musique/openie_results_ner_gpt-4o-mini.json"))))
     p["provenance"] = h._current_openie_provenance()  # shipped file predates the provenance check; declared deviation
     json.dump(p, open(h.openie_results_path, "w"))
     # no-LLM recognition memory: keep top candidates by dense score

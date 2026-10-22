@@ -1,4 +1,4 @@
-"""GraphRAG vs tuned hybrid at matched context budget. See prereg.md in cos-os reports/research/graphrag-hybrid."""
+"""GraphRAG vs tuned hybrid at matched context budget. See prereg.md."""
 import json, random, re, string, subprocess, sys, time, hashlib, collections, pathlib, argparse
 import numpy as np, tiktoken, bm25s
 from sentence_transformers import SentenceTransformer, CrossEncoder
@@ -81,7 +81,11 @@ def gen_claude(q, ctx, model="claude-sonnet-5-5"):
     p = PROMPT.format(c=ctx, q=q); h = hashlib.sha256((model + p).encode()).hexdigest()[:24]; f = ROOT / f"cache/gen_{h}.json"
     if f.exists(): d = json.load(open(f)); d["usage"]["cached"] = True; return d["a"], d["usage"]
     t0 = time.time()
-    r = subprocess.run(["claude", "-p", "--model", model, *LEAN, "--output-format", "json", p], capture_output=True, text=True, timeout=180, cwd="/tmp")
+    for attempt in range(3):  # one hung call must not kill a 1000-question run; still raises after 3 so no answer is faked
+        try: r = subprocess.run(["claude", "-p", "--model", model, *LEAN, "--output-format", "json", p], capture_output=True, text=True, timeout=180, cwd="/tmp"); break
+        except subprocess.TimeoutExpired:
+            if attempt == 2: raise
+            time.sleep(30)
     j = json.loads(r.stdout); u = j.get("usage", {})
     usage = {"in": u.get("input_tokens", 0) + u.get("cache_creation_input_tokens", 0) + u.get("cache_read_input_tokens", 0), "out": u.get("output_tokens", 0),
              "cost": j.get("total_cost_usd", 0), "s": time.time() - t0, "cached": False}
