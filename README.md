@@ -51,7 +51,7 @@ I have not done this end to end from a clean clone, so treat it as untested.
 | `confirmatory/` | `analyze.py`, `results.json`, `results.md`, `report.md`, retrieval ids, audit records of the final analysis |
 | `out/` | n=1000 rows per arm and dataset, the 2Wiki triples, the generator cache |
 | `*_n50_*.json`, `pilot-results.md`, `wave2-bugcheck.md`, `probe.json`, recall and latency scripts | the pilot (n=50) and the bug check after it |
-| `audit-*.md` | reviews of the pilot and of amendment 1 by another model, called through a command line tool named `agy` |
+| `audit-*.md` | reviews of the pilot and of amendment 1 by another model (Gemini), called through a command line tool named `agy`; they are second-model reviews run by scripts, not human audits |
 | `queue/`, `queue-later/` | job scripts that ran, and some I wrote and never ran |
 | `scripts/`, `SHA256SUMS.*` | data download, text restore, and the hashes they check |
 | `HISTORY.md` | how this history was extracted, what changed, and the full timeline |
@@ -69,7 +69,7 @@ All times are IST. `HISTORY.md` has the full table with sources, and for each ro
 | 2026-10-06 13:01 | prereg and amendment 1 frozen, tag `prereg-162-frozen`, on GitHub at 13:01 |
 | 2026-10-06 19:46 | amendment 2 draft pushed (the n=950 split) |
 | 2026-10-07 02:36 | first confirmatory answer generated |
-| 2026-10-11 16:59 | amendment 2 frozen, tag `prereg-162-amendment-2-frozen`, after the confirmatory rows existed |
+| 2026-10-11 16:59 | amendment 2 frozen, tag `prereg-162-amendment-2-frozen`, after the confirmatory rows existed; this tag was never pushed to GitHub before, so the only server record is the push of the commit at 17:02 |
 | 2026-10-11 19:50 | confirmatory analysis committed |
 
 Two caveats come with this table. The 13:04 time of `prereg.md` rests on my local git record. Git author dates can be set by hand, and the first record from GitHub (13:55) is later than the first pilot output (13:36). A copy of the original commit that I kept locally has the same file, but it was never pushed. The pilot is exploratory and does not feed the headline numbers. For the confirmatory run the order holds on the server's clock: the protocol and amendment 1 were on GitHub at 13:01 on 10-06, and the first confirmatory answer came 13.5 hours later.

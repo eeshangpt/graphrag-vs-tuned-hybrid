@@ -1,6 +1,6 @@
 # Data and licences
 
-Code in this repo is Apache-2.0 (`LICENSE`), copyright Eeshan Gupta. Everything below is separate.
+Code in this repo is Apache-2.0 (`LICENSE`), copyright Eeshan Gupta. Third-party notices are in `THIRD_PARTY_NOTICES.md`. Everything below is separate.
 
 ## Benchmarks (downloaded, not shipped)
 
@@ -23,7 +23,7 @@ I checked these licences on the projects' own pages on 2026-10-23. If you reuse 
 
 - `out/*_n1000_*.json`, `*_n50_*.json`: per-question answers, F1 and EM, context sizes. The answers were produced by `claude-sonnet-5-5` through the `claude` CLI with a fixed short-answer prompt (`harness.py`). They contain gold answer strings from the benchmarks.
 - `out/generator-cache.tar.gz`: the same generator's cached answers, keyed by prompt hash, with token counts and cost fields.
-- `out/openie_2wiki.json`: entities and triples for the 6,119 2Wiki passages, extracted by `claude-sonnet-5-5` with `openie_2wiki.py`. Passage text is removed. The triples are facts taken from Wikipedia passages.
+- `out/openie_2wiki.json`: entities and triples for the 6,119 2Wiki passages, extracted by `claude-sonnet-5-5` with `openie_2wiki.py`. Passage text is removed. The triples are short facts taken from Wikipedia passages. Wikipedia text is CC BY-SA, and I have not settled whether that licence's ShareAlike term reaches extracted triples. Treat them as derived from CC BY-SA text and attribute Wikipedia if you reuse them.
 - `confirmatory/retrieval_*.json`: retrieved passage ids per arm and question (ids only).
 
 I do not add a separate licence to these generated files. The benchmark attributions above apply to the gold answers inside them, and the terms of the model provider apply to the generated text.

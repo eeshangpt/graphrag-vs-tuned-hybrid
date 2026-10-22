@@ -1,10 +1,10 @@
 # History of this repo
 
-This repo started as one folder of a private repo, `reports/research/graphrag-hybrid/`. I extracted that folder's history with `git filter-repo --subdirectory-filter`, so the 19 commits below are the original ones with the same author and committer dates. Everything after the commit `5e2fa2c` ("confirmatory analysis") was added on 2026-10-23 to prepare this repo.
+This repo started as one folder of a private repo. I extracted that folder's history with `git filter-repo --subdirectory-filter`, so the 19 commits below are the original ones with the same author and committer dates. Everything after the commit `5e2fa2c` ("confirmatory analysis") was added on 2026-10-23 to prepare this repo.
 
 ## What was changed in the history
 
-- Commit messages: I dropped the `Claude-Session:` trailer lines (they are private session links), removed issue numbers of the private repo, and replaced the name of an internal tool with "independent audit". The `Co-Authored-By` lines stay. The table at the bottom of this file has the old commit id next to the new one. No message was changed beyond that.
+- Commit messages: I dropped the `Claude-Session:` trailer lines (they are private session links), removed issue numbers of the private repo, and replaced the name of an internal tool with "second-model audit". The `Co-Authored-By` lines stay. The table at the bottom of this file has the old commit id next to the new one. No message was changed beyond that.
 - Author and committer e-mail: replaced with the GitHub no-reply address, using a mailmap. The name stays.
 - File content: untouched in the history. `prereg.md`, `prereg-amendment-1.md` and `prereg-amendment-2.md` have the same git blob ids as in the private repo (checked, see below), so the frozen text is the original text.
 - Dates: not touched.
@@ -55,7 +55,7 @@ All local times are IST (+05:30). "Server time" is what GitHub recorded, convert
 What this means for the claims:
 
 - Amendment 1 and the original protocol were on the server at 13:01:25 on 2026-10-06. The first confirmatory answer was cached at 02:36 on 2026-10-07, about 13.5 hours later. No answers were cached in between except the one 2Wiki OpenIE test at 23:37. The confirmatory protocol therefore existed before the confirmatory data, according to a server record.
-- Amendment 2 was on the server as a draft at 19:46 on 2026-10-06, before the first confirmatory answer, and frozen on 2026-10-11, after the MuSiQue and 2Wiki rows were finished. Its text between draft and freeze differs only in the header (`deviations.md` item 2).
+- Amendment 2 was on the server as a draft at 19:46 on 2026-10-06, before the first confirmatory answer, and frozen on 2026-10-11, after the MuSiQue and 2Wiki rows were finished. Its text between draft and freeze differs only in the header: `git diff aaa4f50:prereg-amendment-2-DRAFT.md prereg-162-amendment-2-frozen:prereg-amendment-2.md` shows one changed hunk at the top, and sections A2.1 to A2.4 are identical (`deviations.md` item 2).
 - The first pilot file (13:36) is earlier than the first server record of `prereg.md` (13:55). The 13:04 time rests on my local git record. A local copy of the original commit has the identical file (same blob id), and author dates in git can be set by hand, so read 13:04 as my own record. The pilot is exploratory and does not feed the headline numbers.
 
 ## Old and new commit ids
