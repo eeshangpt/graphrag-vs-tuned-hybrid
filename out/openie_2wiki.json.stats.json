@@ -1,0 +1,11 @@
+{
+ "model": "claude-sonnet-5-5",
+ "n_requested": 6119,
+ "n_ok": 6119,
+ "n_failed": 0,
+ "in_tokens": 15973702,
+ "out_tokens": 3456099,
+ "cost_usd": 98.400215,
+ "calls": 12238,
+ "note": "cost counts only calls cached in the per-passage cache (cache hits from earlier runs included)"
+}
